@@ -11,6 +11,7 @@ import AllergyAdvice from "./pages/AllergyAdvice";
 import UserProfile from "./pages/UserProfile";
 import PageNotFound from "./pages/PageNotFound";
 import Navigation from "./components/Navbar/Navigation";
+import Footer from "./components/Footer/Footer";
 const App = () => {
   return (
     <div>
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
