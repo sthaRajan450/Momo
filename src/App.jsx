@@ -12,7 +12,10 @@ import UserProfile from "./pages/UserProfile";
 import PageNotFound from "./pages/PageNotFound";
 import Navigation from "./components/Navbar/Navigation";
 import Footer from "./components/Footer/Footer";
+import LocomotiveScroll from 'locomotive-scroll';
+import ProductDescription from "./pages/ProductDescription";
 const App = () => {
+  const locomotiveScroll = new LocomotiveScroll();
   return (
     <div>
       <Navigation/>
@@ -26,6 +29,7 @@ const App = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/allergyAdvice" element={<AllergyAdvice />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/productDescription" element={<ProductDescription />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer/>

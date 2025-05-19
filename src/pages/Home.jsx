@@ -33,7 +33,7 @@ const Home = () => {
     setProducts(response.recipes);
 
     setFilteredProduct(
-      products.filter((product) => product.cuisine == cuisine)
+      response.recipes.filter((product) => product.cuisine == cuisine)
     );
   };
   useEffect(() => {
@@ -200,7 +200,7 @@ const Home = () => {
           <Button text="watch the video" icon={<MdOutlinePlayCircleFilled />} />
         </div>
       </div>
-      <div className="flex flex-col items-center">
+      <div  className="flex flex-col items-center">
         <div className="flex justify-center items-center gap-20 my-10 ">
           {[
             {
