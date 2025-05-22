@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import circle from "../assests/circle.png";
 import momo from "../assests/momo.png";
 import person from "../assests/person.png";
@@ -11,6 +11,7 @@ import quality from "../assests/quality.png";
 import buffmomo from "../assests/buffmomo.png";
 import bufffrymomo from "../assests/bufffrymomo.png";
 import buffCmomo from "../assests/buffCmomo.png";
+
 import { MdOutlinePlayCircleFilled } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Button from "../components/Button/Button";
@@ -22,6 +23,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { CartContext } from "../context/CartProvider";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -40,6 +42,8 @@ const Home = () => {
     getProducts();
   }, []);
 
+  const { state, dispatch } = useContext(CartContext);
+
   return (
     <div>
       <div className="w-full h-screen  flex overflow-hidden ">
@@ -48,14 +52,14 @@ const Home = () => {
             <p className="uppercase opacity-60 ">restaurant</p>
             <h1 className="capitalize text-6xl font-bold">
               The
-              <span className="relative"> #one</span>
+              <span className={`relative bg-${backOne}`}> #one</span>
               <br /> momos
               <span className="text-orange-500"> restaurant</span>
             </h1>
             <p>
               More than
               <span className="text-orange-500 font-semibold text-xl ">
-                20+ varieties
+                &nbsp;20+ varieties
               </span>
               of momo available for you
             </p>
@@ -200,7 +204,7 @@ const Home = () => {
           <Button text="watch the video" icon={<MdOutlinePlayCircleFilled />} />
         </div>
       </div>
-      <div  className="flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <div className="flex justify-center items-center gap-20 my-10 ">
           {[
             {

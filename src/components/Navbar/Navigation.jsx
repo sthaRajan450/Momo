@@ -4,6 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import logo from "../../assests/logo.png";
+import { BsCartFill } from "react-icons/bs";
 const Navigation = () => {
   const navigations = [
     {
@@ -46,22 +47,24 @@ const Navigation = () => {
           onClick={() => {
             navigate("/");
           }}
-          width='25px'
+          width="25px"
         />
-        <NavLink className='text-green-700 font-bold text-xl' to="/">momos</NavLink>
+        <NavLink className="text-green-700 font-bold text-xl" to="/">
+          momos
+        </NavLink>
       </div>
       <div className="flex gap-10">
         {navigations.map((navigation, index) => (
-          <NavLink
-            to={navigation.to}
-            key={index}
-            className='text-gray-600'
-          >
+          <NavLink to={navigation.to} key={index} className="text-gray-600">
             {navigation.name}
           </NavLink>
         ))}
       </div>
+      <NavLink to="/cart">
+          <BsCartFill className="text-2xl mr-10" />
+        </NavLink>
       <div className="flex items-center justify-between gap-5">
+        
         <NavLink to="https://www.facebook.com/">
           <FaFacebook className="text-2xl  opacity-60" />
         </NavLink>
@@ -71,7 +74,12 @@ const Navigation = () => {
         <NavLink to="https://www.tiktok.com/">
           <AiFillTikTok className="text-2xl  opacity-60" />
         </NavLink>
-        <NavLink to="/contact" className='bg-orange-600 px-2 rounded-3xl py-1 text-white' >Contact</NavLink>
+        <NavLink
+          to="/contact"
+          className="bg-orange-600 px-2 rounded-3xl py-1 text-white"
+        >
+          Contact
+        </NavLink>
       </div>
     </div>
   );

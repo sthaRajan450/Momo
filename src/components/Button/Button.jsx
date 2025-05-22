@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Button = ({ text, icon, navi }) => {
   const navigate = useNavigate();
-  console.log(navi)
+  
   return (
     <button
       onClick={() => {

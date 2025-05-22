@@ -10,7 +10,7 @@ import { AiFillTikTok } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div className="flex px-20 py-10 text-gray-500 gap-20 bg-[#F7F9FC]">
+    <div className="flex px-20 py-10 text-gray-500 gap-20 bg-[#F7F9FC] ">
       <div className="w-1/2 ">
         <div className="flex items-center gap-2">
           <img className="h-8" src={logo} alt="" />
