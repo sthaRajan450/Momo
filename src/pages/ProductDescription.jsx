@@ -3,12 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { div } from "motion/react-client";
 import CartProvider, { CartContext } from "../context/CartProvider";
+import { ToastContainer, toast } from "react-toastify";
 const ProductDescription = () => {
   const [quantity, setQuantity] = useState(1);
   const location = useLocation();
   // console.log(location.state);
   const { state, dispatch } = useContext(CartContext);
-
+  const notify = () => toast("Added to cart!");
   const naviagte = useNavigate();
   return (
     <div className="w-full bg-gray-100">
@@ -60,6 +61,7 @@ const ProductDescription = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => {
+                notify;
                 dispatch({
                   type: "add",
                   payload: { ...location.state },
@@ -69,6 +71,7 @@ const ProductDescription = () => {
             >
               add to cart
             </motion.button>
+            <ToastContainer />
           </div>
         </div>
       </div>

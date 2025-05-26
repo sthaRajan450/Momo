@@ -21,7 +21,7 @@ const Menu = () => {
             <div key={recipe.id} className="w-1/4 flex flex-col  items-center gap-y-5 cursor-pointer" onClick={()=>{
               naviagte('/productDescription',{state:recipe})
             }}>
-              <motion.img whileHover={{scale:0.8}} transition={{duration:2,ease:'linear'}} className="w-75 rounded-2xl" src={recipe.image} alt={recipe.name} />
+              <motion.img whileHover={{scale:1.1}} transition={{duration:2,ease:'linear'}} className="w-75 rounded-2xl" src={recipe.image} alt={recipe.name} />
               <h1 className="text-xl font-bold">{recipe.name}</h1>
               <h3 className="font-semibold text-xl">RS <span className="text-orange-500 font-bold text-2xl">{recipe.caloriesPerServing}</span></h3>
               {/* <p className="text-center text-gray-600">{recipe.instructions}</p> */}

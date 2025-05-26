@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 import LocomotiveScroll from 'locomotive-scroll';
 import ProductDescription from "./pages/ProductDescription";
 import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
 const App = () => {
   const locomotiveScroll = new LocomotiveScroll();
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/productDescription" element={<ProductDescription />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer/>

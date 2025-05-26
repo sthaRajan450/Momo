@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartProvider";
 import { div, h1 } from "motion/react-client";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [total, setTotal] = useState(0);
   const { state, dispatch } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const totalPrice = state.reduce(
       (acc, item) => acc + item.caloriesPerServing * item.qty,
@@ -50,9 +51,11 @@ const Cart = () => {
                       <h1>{item.qty}</h1>
                       <button
                         className="h-8 w-8  cursor-pointer bg-gray-400 "
-                        onClick={() =>
-                          dispatch({ type: "decrement", payload: item.id })
-                        }
+                        onClick={() => {
+                          if (item.qty > 1) {
+                            dispatch({ type: "decrement", payload: item.id });
+                          }
+                        }}
                       >
                         -
                       </button>
@@ -75,16 +78,21 @@ const Cart = () => {
           </div>
           <div className="border w-1/3 bg-gray-300  p-4 space-y-5 rounded-lg  m-auto ">
             <h1 className="text-center text-xl font-bold">Order Summary</h1>
-            <div className="text-2xl flex font-mono  justify-between" >
+            <div className="text-2xl flex font-mono  justify-between">
               <h1>Subtotal:({quantity})</h1>
               <h1>Rs.{total}</h1>
             </div>
-            <div className="text-2xl flex  font-mono justify-between" >
+            <div className="text-2xl flex  font-mono justify-between">
               <h1>Total</h1>
               <h1>Rs.{total}</h1>
             </div>
 
-            <button className="bg-orange-500 p-3 rounded-lg cursor-pointer text-white w-full">
+            <button
+              className="bg-orange-500 p-3 rounded-lg cursor-pointer text-white w-full"
+              onClick={() => {
+                navigate("/payment", { state: total });
+              }}
+            >
               Procceed to checkout
             </button>
           </div>
