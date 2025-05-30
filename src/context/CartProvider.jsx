@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { toast, Bounce } from "react-toastify"; 
 export const CartContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +8,17 @@ const reducer = (state, action) => {
       if (isExist) {
         return state;
       } else {
+        toast.success(action.payload.name + 'is added to the cart', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
         return [...state, { ...action.payload, qty: 1 }];
       }
     case "remove":

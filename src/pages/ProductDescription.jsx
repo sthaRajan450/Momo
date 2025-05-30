@@ -7,10 +7,10 @@ import { ToastContainer, toast } from "react-toastify";
 const ProductDescription = () => {
   const [quantity, setQuantity] = useState(1);
   const location = useLocation();
-  // console.log(location.state);
-  const { state, dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(CartContext);
   const notify = () => toast("Added to cart!");
   const naviagte = useNavigate();
+  const totalAmount = quantity * location.state?.caloriesPerServing;
   return (
     <div className="w-full bg-gray-100">
       <div className="flex w-[80%] m-auto gap-10 px-20 py-10">
@@ -52,8 +52,10 @@ const ProductDescription = () => {
           </div>
           <div className="flex gap-10 ">
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => {}}
+              whileTap={{ scale: 0.9 }} 
+              onClick={() => {
+                naviagte("/payment", { state: totalAmount });
+              }}
               className="capitalize border px-4 py-2 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-blue-400 "
             >
               buy now

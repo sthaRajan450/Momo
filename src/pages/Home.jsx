@@ -31,7 +31,7 @@ const Home = () => {
   const getProducts = async (cuisine = "American") => {
     let response = await fetch("https://dummyjson.com/recipes");
     response = await response.json();
-    console.log(response.recipes);
+  
     setProducts(response.recipes);
 
     setFilteredProduct(

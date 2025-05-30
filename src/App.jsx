@@ -12,31 +12,40 @@ import UserProfile from "./pages/UserProfile";
 import PageNotFound from "./pages/PageNotFound";
 import Navigation from "./components/Navbar/Navigation";
 import Footer from "./components/Footer/Footer";
-import LocomotiveScroll from 'locomotive-scroll';
+import LocomotiveScroll from "locomotive-scroll";
 import ProductDescription from "./pages/ProductDescription";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
+import Failure from "./pages/Failure";
+import Success from "./pages/Success";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
+
 const App = () => {
   const locomotiveScroll = new LocomotiveScroll();
   return (
     <div>
-      <Navigation/>
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route
+          path="/menu"
+          element={<ProtectedRoutes components={<Menu />} />}
+        />
         <Route path="/services" element={<Services />} />
         <Route path="/allergyAdvice" element={<AllergyAdvice />} />
-        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/productDescription" element={<ProductDescription />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/failure" element={<Failure />} />
+        <Route path="/success" element={<Success />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
