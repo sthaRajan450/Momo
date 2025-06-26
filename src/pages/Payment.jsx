@@ -5,9 +5,8 @@ import CryptoJS from "crypto-js";
 
 const Payment = () => {
   const location = useLocation();
-  console.log(location.state)
+  console.log(location.state);
   const totalAmount = location.state;
-
 
   if (!totalAmount) {
     return <div className="text-red-500">Invalid Payment Request</div>;
@@ -76,14 +75,14 @@ const Payment = () => {
           type="hidden"
           id="success_url"
           name="success_url"
-          value="http://localhost:5173/success"
+          value="https://momo-roan.vercel.app/success"
           required
         />
         <input
           type="hidden"
           id="failure_url"
           name="failure_url"
-          value="http://localhost:5173/failure"
+          value="https://momo-roan.vercel.app/failure"
           required
         />
         <input
