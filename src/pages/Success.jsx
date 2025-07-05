@@ -2,14 +2,35 @@ import { useSearchParams } from "react-router-dom";
 
 function Success() {
   const [search] = useSearchParams();
-  const status = search.get("status");
-  const transaction_uuid = search.get("transaction_uuid");
-  const total_amount = search.get("total_amount");  
+  const encodedData = search.get("data");
+
+  if (!encodedData) {
+    return (
+      <div className="text-red-500 text-center mt-10">
+        Payment data is missing.
+      </div>
+    );
+  }
+
+  let parsedData = null;
+
+  try {
+    const jsonString = atob(encodedData); 
+    parsedData = JSON.parse(jsonString);
+  } catch (error) {
+    return (
+      <div className="text-red-500 text-center mt-10">
+        Failed to decode payment data.
+      </div>
+    );
+  }
+
+  const { status, transaction_uuid, total_amount } = parsedData;
 
   if (!status || !transaction_uuid || !total_amount) {
     return (
       <div className="text-red-500 text-center mt-10">
-        Payment data is incomplete or missing.
+        Some payment fields are missing.
       </div>
     );
   }
